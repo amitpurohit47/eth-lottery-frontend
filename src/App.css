@@ -1,0 +1,13 @@
+
+.main {
+  background-color: #000000;
+  background-image: linear-gradient(
+    253deg,
+    #000000 0%,
+    #2f053a 18%,
+    #000000 100%
+  );
+  padding: 3rem;
+  min-height: 100vh;
+  color: white;
+}
