@@ -1,13 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
 
 .main {
   background-color: #000000;
-  background-image: linear-gradient(
-    253deg,
-    #000000 0%,
-    #2f053a 18%,
-    #000000 100%
-  );
-  padding: 3rem;
+  padding: 0 3rem;
   min-height: 100vh;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-family: "Rubik", sans-serif;
+  z-index: 1;
+}
+
+.main .left{
+  position: relative;
+  z-index: 1;
+}
+
+.main .left::before{
+  position: absolute;
+  content: '';
+  width: 500px;
+  height: 500px;
+  z-index: -1;
+  background-color: #01ff01;
+  opacity: 0.2;
+  filter: blur(10px) drop-shadow(0 0 150px #00ff00);
+  border-radius: 100%;
+  top: -20%;
+  left: -20%;
+}
+
+.main .right svg {
+  width: 300px;
+  filter: drop-shadow(60px -10px 60px #29c671);
+  animation: glow 5s ease infinite;
+}
+
+.main h2 {
+  font-family: "Rubik", sans-serif;
+  font-size: 5rem;
+}
+
+.main span {
+  color: #29c671;
+}
+
+.main .left p {
+  font-size: 1.5rem;
+}
+
+.main h4 {
+  font-family: "Rubik", sans-serif;
+  font-size: 2rem;
+  color: #29c671;
+}
+
+.main .left label {
+  font-size: 1.2rem;
+}
+
+.main .left input {
+  padding: 10px 15px;
+  background-color: #1a1a1a;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1.2rem;
+  margin: 0 10px;
+}
+
+.main button {
+  padding: 10px 50px;
+  font-size: 1rem;
+  border-radius: 30px;
+  background-color: #29c671;
+  color: white;
+  margin-top: 20px;
+  filter: drop-shadow(0 0 3px #29c671);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.main .left .pick-winner p{
+  font-size: 1.2rem;
+}
+
+.main .left .pick-winner button{
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.bg1, .bg2, .bg3{
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  filter: drop-shadow(0 0 150px #29c671);
+  z-index: 0;
+  background-color: #29c671;
+  border-radius: 100%;
+}
+
+/* .bg1::before {
+  position: absolute;
+  left: 0;
+  right: 0;
+  content: '';
+  width: 1px;
+  height: 1px;
+} */
+
+/* svg styling */
+
+.st0 {
+  fill: #29c671;
+}
+.st1 {
+  fill: #1f8e52;
+}
+.st2 {
+  fill: #176b3e;
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 0px #00ff00);
+  }
+  50% {
+    filter: drop-shadow(0 0 4px #00ff00);
+  }
+  100% {
+    filter: drop-shadow(0 0 0px #00ff00);
+  }
 }

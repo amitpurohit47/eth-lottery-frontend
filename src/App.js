@@ -1,7 +1,7 @@
 import web3 from "./web3";
 import lottery from "./lottery";
-import "./App.css";
 import { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
   const [manager, setManager] = useState("");
@@ -64,31 +64,65 @@ function App() {
 
   return (
     <div className="main">
-      <h2>ETHEREUM LOTTERY</h2>
-      <p>Lottery managed by {manager}</p>
-      <p>
-        There are currently {players.length} players competing to win{" "}
-        {web3.utils.fromWei(balance, "ether")} ether
-      </p>
-      <hr />
-      <form onSubmit={handleSubmit}>
-        <h4>Wanna try your luck?</h4>
-        <div>
-          <label>Amount of eth to enter </label>
-          <input value={value} onChange={(e) => setValue(e.target.value)} />
-        </div>
-        {showbtn ? <button>Enter</button> : { message }}
-      </form>
-      {isManager && (
-        <div>
-          <p>Ready to pick a winner?</p>
-          {message1 === "" ? (
-            <button onClick={pickWinner}>Pick Winner</button>
-          ) : (
-            message1
-          )}
-        </div>
-      )}
+      <div className="left">
+        <h2 className="main-heading">Ethereum <span>Lottery</span></h2>
+        <p>Lottery managed by <span>{manager}</span></p>
+        <p>
+          There are currently <span>{players.length}</span> players competing to win{" "}
+          <span>{web3.utils.fromWei(balance, "ether")}</span> ether
+        </p>
+        <hr />
+        <form onSubmit={handleSubmit}>
+          <h4>Wanna try your luck?</h4>
+          <div>
+            <label>Amount of eth to enter </label>
+            <input value={value} onChange={(e) => setValue(e.target.value)} />
+          </div>
+          {showbtn ? <button>Enter</button> : <p>{message}</p>}
+        </form>
+        {isManager && (
+          <div className="pick-winner">
+            <p>Ready to pick a winner?</p>
+            {message1 === "" ? (
+              <button onClick={pickWinner}>Pick Winner</button>
+            ) : (
+              <p>{message1}</p>
+            )}
+          </div>
+        )}
+      </div>
+      <div className="right">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          id="svg8"
+          viewBox="0 0 365.5 592"
+        >
+          <g id="layer5">
+            <g id="g1627">
+              <path
+                id="path1599"
+                className="st0"
+                d="M0 322.4c64.4 34.2 131.6 70 183.5 97.7l182-97.7c-65.9 97.9-120.8 179.4-182 269.6C122.2 502 54.5 402.7 0 322.4zm7-27l176.7-94.3 174.4 93.6-174.3 94.4L7 295.4zm176.5-124.5L0 267.5 182.7 0l182.8 268.1-182-97.2z"
+              />
+              <path
+                id="path1593"
+                className="st1"
+                d="M183.5 420.1l182-97.7c-65.9 97.9-182 269.6-182 269.6V420.1zm.2-219l174.4 93.6-174.3 94.4-.1-188zm-.2-30.2L182.7 0l182.8 268.1-182-97.2z"
+              />
+              <path
+                id="path1603"
+                className="st1"
+                d="M7 295.4l176.7 14.5 174.4-15.1-174.3 94.4L7 295.4z"
+              />
+              <path
+                id="path1606"
+                className="st2"
+                d="M183.7 309.9l174.4-15.1-174.3 94.4-.1-79.3z"
+              />
+            </g>
+          </g>
+        </svg>
+      </div>
     </div>
   );
 }
