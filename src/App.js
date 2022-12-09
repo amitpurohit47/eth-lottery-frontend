@@ -17,7 +17,7 @@ function App() {
     const mngr = await lottery.methods.manager().call();
     const plrs = await lottery.methods.getPlayers().call();
     const bal = await web3.eth.getBalance(lottery.options.address);
-    const accounts = await web3.eth.getAccounts();
+    const accounts = await web3.eth.requestAccounts();
     setManager(mngr);
     setPlayers(plrs);
     setBalance(bal);
@@ -29,7 +29,7 @@ function App() {
     setShowbtn(false);
     setMessage("We are entering you into the lottery. Kindly hold on!");
     try {
-      const accounts = await web3.eth.getAccounts();
+      const accounts = await web3.eth.requestAccounts();
       await lottery.methods.enter().send({
         from: accounts[0],
         value: web3.utils.toWei(value, "ether"),
@@ -46,7 +46,7 @@ function App() {
     e.preventDefault();
     setMessage1("We are picking a winner! Kindly hold on!");
     try {
-      const accounts = await web3.eth.getAccounts();
+      const accounts = await web3.eth.requestAccounts();
       if (accounts[0] !== manager) throw new Error();
       await lottery.methods.pickWinner().send({
         from: manager,
